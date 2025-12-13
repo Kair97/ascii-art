@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ascii-art/funcs"
 	"fmt"
 	"os"
 	"strings"
@@ -9,7 +10,7 @@ import (
 func main() {
 
 	input := os.Args[1]
-	fmt.Print(input)
+	fmt.Println(input)
 
 	banner := "standard.txt"
 
@@ -20,10 +21,7 @@ func main() {
 	}
 	lines := strings.Split(string(data), "\n")
 
-	// Replace literal "\n" with actual newline
-	input = strings.ReplaceAll(input, `\n`, "\n")
-
-	inputLines := strings.Split(input, "\n")
+	inputLines := funcs.SplitNewLine(input)
 
 	fmt.Println(inputLines)
 	for _, line := range inputLines {
