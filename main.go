@@ -12,7 +12,7 @@ func main() {
 
 	banner := "standard.txt"
 
-	if len(input) > 1 && input[1] == "standard.txt" || input[1] == "thinkertoy.txt" || input[1] == "shadow.txt" {
+	if (len(input) > 1) && (input[1] == "standard.txt" || input[1] == "thinkertoy.txt" || input[1] == "shadow.txt") {
 		banner = input[1]
 	}
 
