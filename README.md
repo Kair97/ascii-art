@@ -1,103 +1,116 @@
-# ASCII Art Generator (Go)
+# 🎨 ASCII-Art
 
-A command-line program written in Go that converts text into its ASCII-art graphical representation using predefined banner templates.
-
----
-
-## Features
-
-- Supports:
-  - Uppercase letters
-  - Lowercase letters
-  - Numbers
-  - Special characters
-  - Spaces
-  - `\n` for multi-line input
-- Multiple banner styles:
-  - `standard.txt`
-  - `shadow.txt`
-  - `thinkertoy.txt`
-- Modular structure using Go packages
-- Uses only Go standard library
+> A Go program that converts text into beautiful ASCII graphical banners.
 
 ---
 
-## Project Structure
+## 📖 Description
 
+**ASCII-Art** is a Go application that receives a string as a command-line argument and prints it in a graphical ASCII format.
+
+The program reads predefined banner templates and renders each character as an 8-line ASCII representation.
+
+Each character:
+
+* Has a height of **8 lines**
+* Is generated using a selected **banner style**
+* Supports letters, numbers, spaces, special characters, and `\n`
+
+---
+
+## 🗂 Project Structure
+
+```
 ascii-art/
-├── main.go
-├── go.mod
-├── standard.txt
-├── shadow.txt
-├── thinkertoy.txt
+│
+├── banners/
+│   ├── standard.txt
+│   ├── shadow.txt
+│   └── thinkertoy.txt
+│
 ├── funcs/
-│ ├── helper.go
-│ ├── printer.go
-│ └── splitendl.go
-└── .gitignore
-
-
----
-
-## Build
-
-go build -o ascii-art
-
+│   ├── helper.go
+│   ├── printer.go
+│   └── splitendl.go
+│
+├── main.go
+└── go.mod
+```
 
 ---
 
-## Usage
+## 🚀 Usage
 
-### Default banner (standard)
+### ▶ Run with Default Banner (`standard.txt`)
 
-./ascii-art "Hello"
+```
+go run main.go "any_text" | cat -e
+```
 
+### Example
 
-### With specific banner
-
-./ascii-art "Hello" shadow.txt
-
-./ascii-art "Hello" thinkertoy.txt
-
-
-If no banner is specified, `standard.txt` is used by default.
+```
+go run main.go "Hello" | cat -e
+```
 
 ---
 
-## Multi-line Input
+### 🎭 Run with Specific Banner Style
 
-./ascii-art "Hello\n\nWorld"
+```
+go run main.go "text" "banner_name" | cat -e
+```
 
+### Available Banner Styles
 
-To verify correct newline handling:
+* `standard.txt`
+* `shadow.txt`
+* `thinkertoy.txt`
 
-./ascii-art "Hello\n\nWorld" | cat -e
+### Example
 
-
----
-
-## How It Works
-
-- Reads banner file
-- Normalizes line endings (`\r\n` → `\n`)
-- Converts `\n` from user input into real newline characters
-- Splits input into lines
-- Maps each character using:
-
-startLine = (ASCII - 32) * 9
-
-
-Each character has a height of 8 lines in the banner file.
+```
+go run main.go "Hello" "shadow.txt" | cat -e
+```
 
 ---
 
-## Requirements
+## ✨ Features
 
-- Go 1.20+
-- No external dependencies
+✔ Supports:
+
+* Uppercase and lowercase letters
+* Numbers
+* Spaces
+* Special characters
+* `\n` for new lines
+
+✔ Handles multiple lines correctly
+
+✔ Uses only **standard Go packages**
+
+✔ Clean project structure
 
 ---
 
-## License
+## 🖥 Example with New Line
 
-Educational project.
+```
+go run main.go "Hello\nWorld" | cat -e
+```
+
+---
+
+## ⚙ Requirements
+
+* Go installed
+* Only standard Go packages are used
+* Banner files must be inside the `banners/` directory
+
+---
+
+## 📌 Notes
+
+* If no banner is specified, `standard.txt` is used by default.
+* Input must be passed as a command-line argument.
+* The program reads banner files from the `banners/` folder.
