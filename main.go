@@ -16,7 +16,7 @@ func main() {
 		banner = input[1]
 	}
 
-	data, err := os.ReadFile(banner)
+	data, err := os.ReadFile("banners/" + banner)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
