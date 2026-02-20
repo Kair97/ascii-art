@@ -19,9 +19,33 @@ func GetData(data []byte) []string {
 
 }
 
-func FixLines(input []string) []string {
-	fixed := strings.ReplaceAll(input[0], "\\n", "\n")
+func FixLines(input string) []string {
+	fixed := strings.ReplaceAll(input, "\\n", "\n")
 	lines := strings.Split(fixed, "\n")
 	// lines := funcs.SplitNewLine(input[0])
 	return lines
+}
+
+func GetInpAndBaner(args []string) (string, string) {
+
+	if len(args) == 1 {
+		if args[0] == "standard.txt" || args[0] == "thinkertoy.txt" || args[0] == "shadow.txt" {
+			return "", args[0]
+		} else {
+			return args[0], "standard.txt"
+		}
+	} else if len(args) == 0 {
+		return "", "standard.txt"
+	} else {
+
+		last := args[len(args)-1]
+
+		if last == "standard.txt" || last == "thinkertoy.txt" || last == "shadow.txt" {
+			return strings.Join(args[:len(args)-1], ""), args[0]
+		} else {
+			return strings.Join(args[:len(args)-1], "") + " " + last, "standard.txt"
+		}
+
+	}
+
 }

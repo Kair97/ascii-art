@@ -4,18 +4,15 @@ import (
 	"ascii-art/funcs"
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
+	before := time.Now()
+	args := os.Args[1:]
 
-	input := os.Args[1:]
-
-	banner := "standard.txt"
-
-	if (len(input) > 1) && (input[1] == "standard.txt" || input[1] == "thinkertoy.txt" || input[1] == "shadow.txt") {
-		banner = input[1]
-	}
-
+	input, banner := funcs.GetInpAndBaner(args)
+	fmt.Println(input)
 	data, err := os.ReadFile("banners/" + banner)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -25,6 +22,7 @@ func main() {
 	dataStr := funcs.GetData(data)
 	lines := funcs.FixLines(input)
 
-	funcs.PrintData(lines, dataStr)
+	fmt.Println(funcs.PrintData(lines, dataStr))
+	fmt.Println(time.Since(before))
 
 }

@@ -1,15 +1,19 @@
 package funcs
 
-import "fmt"
+import (
+	"strings"
+)
 
-func PrintData(lines []string, dataStr []string) {
+func PrintData(lines []string, dataStr []string) string {
+	var builder strings.Builder
+
 	for i, line := range lines {
 
 		if line == "" {
 			if i == len(lines)-1 {
 				continue
 			}
-			fmt.Println()
+			builder.WriteString("\n")
 			continue
 		}
 		for i := 1; i < 9; i++ {
@@ -18,10 +22,11 @@ func PrintData(lines []string, dataStr []string) {
 				k := int(char)
 
 				startLine := (k - 32) * 9
-				fmt.Print(dataStr[startLine+i])
+				builder.WriteString(dataStr[startLine+i])
 
 			}
-			fmt.Println()
+			builder.WriteString("\n")
 		}
 	}
+	return builder.String()
 }
