@@ -43,7 +43,7 @@ func GetInpAndBaner(args []string) (string, string) {
 		if last == "standard.txt" || last == "thinkertoy.txt" || last == "shadow.txt" {
 			return strings.Join(args[:len(args)-1], ""), args[0]
 		} else {
-			return strings.Join(args[:len(args)-1], "") + " " + last, "standard.txt"
+			return strings.Join(args[:len(args)-1], "") + last, "standard.txt"
 		}
 
 	}
