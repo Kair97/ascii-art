@@ -29,21 +29,16 @@ func FixLines(input string) []string {
 func GetInpAndBaner(args []string) (string, string) {
 
 	if len(args) == 1 {
-		if args[0] == "standard.txt" || args[0] == "thinkertoy.txt" || args[0] == "shadow.txt" {
-			return "", args[0]
-		} else {
-			return args[0], "standard.txt"
-		}
+		return args[0], "standard.txt"
 	} else if len(args) == 0 {
 		return "", "standard.txt"
 	} else {
 
 		last := args[len(args)-1]
-
 		if last == "standard.txt" || last == "thinkertoy.txt" || last == "shadow.txt" {
-			return strings.Join(args[:len(args)-1], ""), args[0]
+			return strings.Join(args[:len(args)-1], ""), last
 		} else {
-			return strings.Join(args[:len(args)-1], "") + last, "standard.txt"
+			return strings.Join(args, ""), "standard.txt"
 		}
 
 	}

@@ -4,15 +4,13 @@ import (
 	"ascii-art/funcs"
 	"fmt"
 	"os"
-	"time"
 )
 
 func main() {
-	before := time.Now()
 	args := os.Args[1:]
-
+	fmt.Println(args)
 	input, banner := funcs.GetInpAndBaner(args)
-	fmt.Println(input)
+	fmt.Println(input, banner)
 	data, err := os.ReadFile("banners/" + banner)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -23,6 +21,5 @@ func main() {
 	lines := funcs.FixLines(input)
 
 	fmt.Println(funcs.PrintData(lines, dataStr))
-	fmt.Println(time.Since(before))
 
 }
