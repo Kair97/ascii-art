@@ -21,6 +21,9 @@ func PrintData(lines []string, dataStr []string) string {
 			for _, char := range line {
 				k := int(char)
 
+				if k < 32 || k > 126 {
+					continue
+				}
 				startLine := (k - 32) * 9
 				builder.WriteString(dataStr[startLine+i])
 

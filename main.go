@@ -20,6 +20,6 @@ func main() {
 	dataStr := funcs.GetData(data)
 	lines := funcs.FixLines(input)
 
-	fmt.Println(funcs.PrintData(lines, dataStr))
+	fmt.Print(funcs.PrintData(lines, dataStr))
 
 }
